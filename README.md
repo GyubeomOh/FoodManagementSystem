@@ -1,2 +1,2 @@
-# StudentManagementSystem
+# XManagementSystem
 course project for oop
