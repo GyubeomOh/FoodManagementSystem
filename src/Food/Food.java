@@ -2,7 +2,7 @@ package Food;
 
 import java.util.Scanner;
 
-public class Food {
+public class Food { // protected 를 사용함으로써 자신의 서브 클래스가 아니면 다른 클래스에서는 접근하지 못하도록 합니다.
 	protected FoodKind kind = FoodKind.Korean;	
 	protected String name;
 	protected String restaurant;
@@ -18,7 +18,7 @@ public class Food {
 		this.phone = phone;
 		this.price = price;
 	}
-
+	// getters 와 setters 를 사용하여 
 	public FoodKind getKind() {
 		return kind;
 	}
