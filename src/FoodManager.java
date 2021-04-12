@@ -7,7 +7,7 @@ public class FoodManager {
 		this.input= input;
 	}
 	
-	public void addFood() { // addFood 함수 정의
+	public void addFood() { // addFood 함수 정의...
 		food = new Food();
 		for (int i = 0; i<food.name.length; i++) {
 			System.out.print("Food name : ");
