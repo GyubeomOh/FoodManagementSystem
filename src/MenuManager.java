@@ -7,10 +7,10 @@ public class MenuManager {
 		FoodManager foodManager = new FoodManager(input);
 		int num = 0;
 		while (num !=5) { // 5번이 아니면 실행하도록 유도
-			System.out.println("1. Add food");
-			System.out.println("2. Delete food");
-			System.out.println("3. Edit food");
-			System.out.println("4. View food");
+			System.out.println("1. Add food!");
+			System.out.println("2. Delete food!");
+			System.out.println("3. Edit food!");
+			System.out.println("4. View food!");
 			System.out.println("5. Exit");
 			System.out.println("Select one number between 1 - 5:");
 			num = input.nextInt();
