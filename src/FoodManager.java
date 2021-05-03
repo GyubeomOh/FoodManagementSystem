@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import Food.Food;
+import Food.FoodKind;
 import Food.KoreanFood;
 import Food.ChineseFood;
 import Food.JapaneseFood;
@@ -25,28 +26,28 @@ public class FoodManager {
 			System.out.print("Select num for Food Kind between 1 and 4 : ");
 			kind = input.nextInt();
 			if (kind == 1) {
-				food = new KoreanFood();
+				food = new Food(FoodKind.Korean);
 				food.getFoodInput(input);
 				foods.add(food);
 				break;
 			}
 			
 			else if (kind == 2) {
-				food = new ChineseFood();
+				food = new ChineseFood(FoodKind.Chinese);
 				food.getFoodInput(input);
 				foods.add(food);
 				break;
 			}
 			
 			else if (kind == 3) {
-				food = new JapaneseFood();
+				food = new JapaneseFood(FoodKind.Japanese);
 				food.getFoodInput(input);
 				foods.add(food);
 				break;
 			}
 			
 			else if (kind == 4) {
-				food = new FastFood();
+				food = new FastFood(FoodKind.Fast);
 				food.getFoodInput(input);
 				foods.add(food);
 				break;
@@ -64,14 +65,14 @@ public class FoodManager {
 		System.out.print("Food name : ");
 		String foodname = input.next();
 		int index = -1;
-		for(int i=0 ; i<foods.size(); i++) {
+		for(int i=0 ; i<foods.size(); i++) { // 반복문을 이용하여 사용자가 입력한 값을 몇번째 인덱스에 있는 배열인지 찾아서 인덱스 값을 저장함
 			if (foods.get(i).getName().equals(foodname)) {
 				index = i;
 				break;
 			}
 		}
 		if (index >= 0) {
-			foods.remove(index);
+			foods.remove(index); // 반복문을 이용하여 찾은 배열의 인덱스 값에 있는 내용을 제거함
 			System.out.println("the food" + foodname + "is deleted");
 		}
 		else {

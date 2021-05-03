@@ -2,7 +2,7 @@ package Food;
 
 import java.util.Scanner;
 
-public class KoreanFood extends Food {
+public class KoreanFood extends Food { 
 	public void getFoodInput(Scanner input) {
 		System.out.print("Food name : ");
 		String name = input.next();

@@ -4,5 +4,5 @@ public enum FoodKind { // enum 은 들어가는 종류가 0,1,2,3 이랑 숫자로 정해지는데
 	Korean,
 	Chinese,
 	Japanese,
-	FastFood
+	Fast
 }
