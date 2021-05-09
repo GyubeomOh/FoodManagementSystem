@@ -2,7 +2,7 @@ package Food;
 
 import java.util.Scanner;
 
-public class FastFood extends Food {
+public class FastFood extends Food implements FoodInput {
 	
 	protected int price;
 	

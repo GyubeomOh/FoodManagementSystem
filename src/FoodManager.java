@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import Food.Food;
+import Food.FoodInput;
 import Food.FoodKind;
 import Food.KoreanFood;
 import Food.ChineseFood;
@@ -9,7 +10,7 @@ import Food.JapaneseFood;
 import Food.FastFood;
 
 public class FoodManager {
-	ArrayList<Food> foods = new ArrayList<Food>();	
+	ArrayList<FoodInput> foods = new ArrayList<FoodInput>();	
 	Scanner input;
 	FoodManager(Scanner input){
 		this.input= input;
@@ -17,7 +18,7 @@ public class FoodManager {
 	
 	public void addFood() { // addFood 함수 정의
 		int kind = 0;
-		Food food;
+		FoodInput foodInput;
 		while (kind != 1 && kind != 2) {
 			System.out.println("1 for Korean Food");
 			System.out.println("2 for Chinese Food");
@@ -26,30 +27,30 @@ public class FoodManager {
 			System.out.print("Select num for Food Kind between 1 and 4 : ");
 			kind = input.nextInt();
 			if (kind == 1) {
-				food = new Food(FoodKind.Korean);
-				food.getFoodInput(input);
-				foods.add(food);
+				foodInput = new KoreanFood(FoodKind.Korean);
+				foodInput.getFoodInput(input);
+				foods.add(foodInput);
 				break;
 			}
 			
 			else if (kind == 2) {
-				food = new ChineseFood(FoodKind.Chinese);
-				food.getFoodInput(input);
-				foods.add(food);
+				foodInput = new ChineseFood(FoodKind.Chinese);
+				foodInput.getFoodInput(input);
+				foods.add(foodInput);
 				break;
 			}
 			
 			else if (kind == 3) {
-				food = new JapaneseFood(FoodKind.Japanese);
-				food.getFoodInput(input);
-				foods.add(food);
+				foodInput = new JapaneseFood(FoodKind.Japanese);
+				foodInput.getFoodInput(input);
+				foods.add(foodInput);
 				break;
 			}
 			
 			else if (kind == 4) {
-				food = new FastFood(FoodKind.Fast);
-				food.getFoodInput(input);
-				foods.add(food);
+				foodInput = new FastFood(FoodKind.Fast);
+				foodInput.getFoodInput(input);
+				foods.add(foodInput);
 				break;
 			}
 			
@@ -85,8 +86,8 @@ public class FoodManager {
 		System.out.print("Food name : ");
 		String foodname = input.next();
 		for(int i=0 ; i<foods.size(); i++) {
-			Food food = foods.get(i);
-			if (food.getName().equals(foodname)) {
+			FoodInput foodInput = foods.get(i);
+			if (foodInput.getName().equals(foodname)) {
 				int num = 0;
 				while (num !=5) {
 					System.out.println("1. edit name");
@@ -99,22 +100,22 @@ public class FoodManager {
 					if (num == 1) {
 						System.out.print("Food name : ");
 						String name = input.next();
-						food.setName(name);
+						foodInput.setName(name);
 					}					
 					if (num == 2) {
 						System.out.print("Restaurant name : ");
 						String restaurant = input.next();
-						food.setRestaurant(restaurant);
+						foodInput.setRestaurant(restaurant);
 					}
 					if (num == 3) {
 						System.out.print("Phone number : "); 
 						String phone = input.next();
-						food.setPhone(phone);
+						foodInput.setPhone(phone);
 					}
 					if (num == 4) {
 						System.out.print("Food price : "); 
 						int price = input.nextInt();
-						food.setPrice(price);
+						foodInput.setPrice(price);
 					}
 					else {
 						continue;

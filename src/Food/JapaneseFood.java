@@ -2,7 +2,7 @@ package Food;
 
 import java.util.Scanner;
 
-public class JapaneseFood extends Food {
+public class JapaneseFood extends Food implements FoodInput {
 	
 	protected String phone;
 	
