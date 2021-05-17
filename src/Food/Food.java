@@ -2,7 +2,9 @@ package Food;
 
 import java.util.Scanner;
 
-public abstract class Food { // protected 를 사용함으로써 자신의 서브 클래스가 아니면 다른 클래스에서는 접근하지 못하도록 합니다.
+import Exception.PhoneFormatException;
+
+public abstract class Food implements FoodInput { // protected 를 사용함으로써 자신의 서브 클래스가 아니면 다른 클래스에서는 접근하지 못하도록 합니다.
 	protected FoodKind kind = FoodKind.Korean;
 	protected String name;
 	protected String restaurant;
@@ -65,7 +67,10 @@ public abstract class Food { // protected 를 사용함으로써 자신의 서브 클래스가 �
 		return phone;
 	}
 
-	public void setPhone(String phone) {
+	public void setPhone(String phone) throws PhoneFormatException {
+		if(!phone.contains("-") && !phone.equals("")){
+			throw new PhoneFormatException();
+		}
 		this.phone = phone;
 	}
 
@@ -80,5 +85,54 @@ public abstract class Food { // protected 를 사용함으로써 자신의 서브 클래스가 �
 	
 	public abstract void printInfo();
 	
-
+	public void setFoodName(Scanner input) {
+		System.out.print("Food name : ");
+		String name = input.next();
+		this.setName(name);
+	}
+	
+	public void setFoodRestaurant(Scanner input) {
+		System.out.print("Restaurant name : ");
+		String restaurant = input.next();
+		this.setRestaurant(restaurant);
+	}
+		
+	public void setFoodPhone(Scanner input) {
+		String phone = "";
+		while (!phone.contains("-")) {		
+			System.out.print("Phone number : "); 
+			phone = input.next();
+			try {
+				this.setPhone(phone);
+			} catch (PhoneFormatException e) {
+				System.out.println("Incorrect Phone Format. Put the phone number that contains '-' !");
+			}
+		}
+	}
+	
+	public void setFoodPrice(Scanner input) {
+		System.out.print("Food price : "); 
+		int price = input.nextInt();
+		this.setPrice(price);
+	}
+	
+	public String getKindString() {
+		String skind = "none";
+		switch(this.kind) {
+		case Korean:
+			skind = "KOR";
+			break;
+		case Chinese:
+			skind = "CNA";
+			break;
+		case Japanese:
+			skind = "JAV";
+			break;
+		case Fast:
+			skind = "FAST"; 
+			break;
+		default:				
+		}
+		return skind;
+	}
 }

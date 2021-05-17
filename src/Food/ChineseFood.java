@@ -2,92 +2,60 @@ package Food;
 
 import java.util.Scanner;
 
-public class ChineseFood extends Food implements FoodInput {
-	
+import Exception.PhoneFormatException;
+
+public class ChineseFood extends MixedFood {
+
 	protected String phone;
-	
+
 	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(String phone) {
+	public void setPhone(String phone) throws PhoneFormatException {
+		if (!phone.contains("-") && !phone.equals("")) {
+			throw new PhoneFormatException();
+		}
 		this.phone = phone;
 	}
-	
+
 	public ChineseFood(FoodKind kind) {
 		super(kind);
 	}
-	
+
 	public void getFoodInput(Scanner input) {
-		System.out.print("Food name : ");
-		String name = input.next();
-		this.setName(name);
-		
-		System.out.print("restaurant name : ");
-		String restaurant = input.next();
-		this.setRestaurant(restaurant);
-		
+		setFoodName(input);
+		setFoodRestaurant(input);
+		setFoodPhoneYN(input);
+		setFoodOwnerPhoneYN(input);
+		setFoodPrice(input);
+	}
+
+	public void setFoodOwnerPhoneYN(Scanner input) {
 		char answer = 'x';
-		while (answer != 'y' && answer != 'Y' && answer != 'n' && answer != 'N') {
-			System.out.print("Phone number exist? (Y or N)");
-			answer = input.next().charAt(0);
-			if (answer == 'y' || answer =='Y') {
-				System.out.print("Phone number : ");
-				String phone = input.next();
-				this.setPhone(phone);
-				break;
-			}
-			else if (answer == 'n' || answer =='N') {
-				this.setPhone("");
-				break;
-			}
-			else {
-				System.out.print("Phone number exist? (Y or N)");
-			}
-		}
-		
-		answer = 'x';
 		while (answer != 'y' && answer != 'Y' && answer != 'n' && answer != 'N') {
 			System.out.print("Owner's phone number exist? (Y or N)");
 			answer = input.next().charAt(0);
-			if (answer == 'y' || answer =='Y') {
-				System.out.print("Owner's phone number : ");
-				String phone = input.next();
-				super.setPhone(phone);
-				System.out.println("Test");
+			if (answer == 'y' || answer == 'Y') {
+				String phone = "";
+				while(!phone.contains("-")) {
+					System.out.print("Owner's phone number : ");
+					phone = input.next();
+					try {
+						super.setPhone(phone);
+					} catch (PhoneFormatException e) {
+						System.out.println("Incorrect Phone Format. Put the phone number that contains '-' !");
+					}
+				}
+			} else if (answer == 'n' || answer == 'N') {
 				break;
-			}
-			else if (answer == 'n' || answer =='N') {
-				super.setPhone("");
-				break;
-			}
-			else {
-				System.out.print("Phone number exist? (Y or N)");
 			}
 		}
-		
-		System.out.print("Food price : "); 
-		int price = input.nextInt();
-		this.setPrice(price);
 	}
-	
+
 	public void printInfo() {
-		String skind = "none";
-		switch(this.kind) {
-		case Korean:
-			skind = "Kor";
-			break;
-		case Chinese:
-			skind = "CNA";
-			break;
-		case Japanese:
-			skind = "JAV";
-			break;
-		case Fast:
-			skind = "Fast"; 
-			break;
-		default:				
-		}
-		System.out.println("Kind:" + skind + " name:" + name + " restaurant:" + restaurant + " phone:" + this.phone + " price:" + price + "¿ø owner's phone" + super.phone);
+		String skind = getKindString();
+		System.out.println("Kind:" + skind + " name:" + name + " restaurant:" + restaurant + " phone:" + this.phone
+				+ " price:" + price + "¿ø owner's phone:" + super.phone);
 	}
 }
