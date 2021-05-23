@@ -1,10 +1,16 @@
 package Food;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 import Exception.PhoneFormatException;
 
-public abstract class Food implements FoodInput { // protected 를 사용함으로써 자신의 서브 클래스가 아니면 다른 클래스에서는 접근하지 못하도록 합니다.
+public abstract class Food implements FoodInput, Serializable { // protected 를 사용함으로써 자신의 서브 클래스가 아니면 다른 클래스에서는 접근하지 못하도록 합니다.
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2990810175513737207L;
+	
 	protected FoodKind kind = FoodKind.Korean;
 	protected String name;
 	protected String restaurant;
