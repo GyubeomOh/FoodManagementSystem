@@ -10,11 +10,17 @@ public interface FoodInput {
 	
 	public void setName(String name);
 	
+	public String getRestaurant();
+	
 	public void setRestaurant(String restaurant);
+	
+	public String getPhone();
 	
 	public void setPhone(String phone) throws PhoneFormatException;
 	
-	public void setPrice(int price);
+	public int getPrice();
+	
+	public void setPrice(int price);	
 	
 	public void getFoodInput(Scanner input);
 	

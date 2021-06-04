@@ -7,9 +7,13 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
-public class FoodAdder extends JFrame {
+public class FoodAdder extends JPanel {
 	
-	public FoodAdder() {
+	WindowFrame frame;
+	
+	public FoodAdder(WindowFrame frame) {
+		this.frame = frame;
+		
 		JPanel panel = new JPanel(new SpringLayout());
 		panel.setLayout(new SpringLayout());
 		
@@ -41,11 +45,8 @@ public class FoodAdder extends JFrame {
 		panel.add(new JButton("cancel"));
 		
 		SpringUtilities.makeCompactGrid(panel, 5, 2, 6, 6, 6, 6);
-		
-		this.setSize(300, 300);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		this.setContentPane(panel);
+	
+		this.add(panel);
 		this.setVisible(true);
 	}
 }

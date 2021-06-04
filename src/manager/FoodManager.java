@@ -1,3 +1,4 @@
+package manager;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -8,6 +9,7 @@ import Food.KoreanFood;
 import Food.ChineseFood;
 import Food.JapaneseFood;
 import Food.FastFood;
+import Food.Food;
 
 public class FoodManager implements Serializable {
 	/**
@@ -164,5 +166,14 @@ public class FoodManager implements Serializable {
 		System.out.println("5. EXIT");
 		System.out.println("Choose 1 through 5");
 	}
+	
+	public int size() {
+		return foods.size();
+	}
+	
+	public FoodInput get(int index) {
+		return (Food) foods.get(index);
+	}
+	
 }
 
