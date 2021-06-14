@@ -4,23 +4,24 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
+import gui.FoodAdder;
 import gui.FoodViewer;
 import gui.WindowFrame;
 
-public class ButtonViewListener implements ActionListener {
+public class FoodAdderCancelListener implements ActionListener {
 
 	WindowFrame frame;
 	
-	public ButtonViewListener(WindowFrame frame) {
+	public FoodAdderCancelListener(WindowFrame frame) {
 		this.frame = frame;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		JButton b = (JButton) e.getSource();
-		FoodViewer viewer = frame.getFoodviewer();
-		frame.setupPanel(viewer);
-
+		frame.getContentPane().removeAll();
+		frame.getContentPane().add(frame.getMenuSelection());
+		frame.revalidate();
+		frame.repaint();
 	}
 
 }

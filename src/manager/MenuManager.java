@@ -70,7 +70,7 @@ public class MenuManager {
 		System.out.println("4. View food!");
 		System.out.println("5. Exit");
 		System.out.println("Select one number between 1 - 5:");
-	}
+	} 
 	
 	public static FoodManager getObject(String filename) {
 		FoodManager foodManager = null;

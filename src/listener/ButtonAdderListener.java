@@ -8,20 +8,20 @@ import gui.FoodAdder;
 import gui.FoodViewer;
 import gui.WindowFrame;
 
-public class ButtonAddListener implements ActionListener {
+public class ButtonAdderListener implements ActionListener {
 
 	WindowFrame frame;
 	
-	public ButtonAddListener(WindowFrame frame) {
+	public ButtonAdderListener(WindowFrame frame) {
 		this.frame = frame;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		JButton b = (JButton) e.getSource();
-		FoodAdder adder = frame.getFoodadder();
-		frame.setupPanel(adder);
-
+		frame.getContentPane().removeAll();
+		frame.getContentPane().add(frame.getFoodadder());
+		frame.revalidate();
+		frame.repaint();
 	}
 
 }

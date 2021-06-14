@@ -23,25 +23,33 @@ public class FoodManager implements Serializable {
 		this.input= input;
 	}
 	
+	public void addFood(String name, String restaurant, String phone, int price) {
+		FoodInput foodInput = new KoreanFood(FoodKind.Korean);
+	}
+	
+	public void addFood(FoodInput foodInput) {
+		foods.add(foodInput);
+	}
+	
 	public void addFood() { // addFood 함수 정의
 		int kind = 0;
-		FoodInput food = null;
+		FoodInput foodInput = null;
 		while (kind < 1 || kind > 3) {
 			try {
 				showAddMenu();
 				kind = input.nextInt();
 				switch(kind) {
 				case 1:
-					getKoreanFood(food);
+					getKoreanFood(foodInput);
 					break;
 				case 2:
-					getChineseFood(food);
+					getChineseFood(foodInput);
 					break;
 				case 3:
-					getJapaneseFood(food);
+					getJapaneseFood(foodInput);
 					break;
 				case 4:
-					getFastFood(food);
+					getFastFood(foodInput);
 					break;
 				default:
 					continue;
